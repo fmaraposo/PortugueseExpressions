@@ -1,0 +1,61 @@
+<h2>My area</h2>
+
+
+<div class="containers">
+      <div class="row">
+    {{#each foundLikes}}
+      
+    <label class="label-card">
+       <input class="input-card" type="checkbox" />
+    <div class="mycard flip-card" >
+      <div class="mycard-body front">
+        <h3 class="mycard-title"> {{card.phrase}} </h3> 
+      
+        <hr>
+        <p class="click">Click to flip</p>   
+        <div class="thumbsup-icon">
+          <form action="/myarea/{{_id}}/delete" method="POST">
+          <button class="btn-thumbsdown-img" type="submit"><img class="thumbsdown-img" src="/images/thumb-down.png" alt="dislike"></button>
+          </form>
+      </div>
+      </div>
+
+       
+       <div class="mycard-body back">
+               
+               <audio controls>
+        <source src="{{card.translationAudioPt}}" type="audio/mpeg">
+        </audio>
+     
+        <h3 class="mycard-title"> {{card.translation}} </h3> 
+         <hr >
+        
+               <audio controls>
+        <source src="{{card.meaningAudioEng}}" type="audio/mpeg">
+        </audio>
+ 
+         <h3 class="mycard-title"> {{card.meaning}} </h3>  
+         <hr>
+         <p class="click">Click to flip</p>         
+      </div>
+    </div>
+     </label>
+    {{/each}}
+    </div>
+  </div> 
+
+
+{{!-- <div class="card-deck container-fluid">
+  <div class="row d-flex flex-wrap">
+    {{#each foundLikes}}
+    <div class="mycard col-4">
+      <div class="mycard-body">
+        <h3 class="mycard-title"> {{card.phrase}}  </h3>
+        <form action="/myarea/{{_id}}/delete" method="POST">
+        <button class="btn-thumbsdown-img" type="submit"><img class="thumbsdown-img" src="/images/thumb-down.png" alt="dislike"></button>
+        </form>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</div> --}}

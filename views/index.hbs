@@ -1,0 +1,43 @@
+<h1 class="page-title">Portuguese Expressions</h1>
+
+<p class="page-subtitle">Welcome to the one and only Portuguese Expressions WebSite</p>
+
+
+<div class="containers-index">
+      <div class="row">
+    {{#each cards}}
+      
+    <label class="label-card">
+       <input class="input-card" type="checkbox" />
+    <div class="mycard flip-card" >
+      <div class="mycard-body front">
+        <h3 class="mycard-title"> {{phrase}} </h3> 
+      
+        <hr>
+        <p class="click">Click to flip</p>   
+      </div>
+
+       
+       <div class="mycard-body back">
+               
+               <audio controls>
+        <source src="{{translationAudioPt}}" type="audio/mpeg">
+        </audio>
+     
+        <h3 class="mycard-title"> {{translation}} </h3> 
+         <hr >
+        
+               <audio controls>
+        <source src="{{meaningAudioEng}}" type="audio/mpeg">
+        </audio>
+ 
+         <h3 class="mycard-title"> {{meaning}} </h3>  
+         <hr>
+         <p class="click">Click to flip</p>         
+      </div>
+    </div>
+     </label>
+    {{/each}}
+    </div>
+  </div> 
+

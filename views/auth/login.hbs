@@ -1,0 +1,42 @@
+
+
+
+<!--    <form action="/login" method="POST">
+  <div class="form-group">
+   ///// <label for="exampleInputUser1">Username</label> 
+    <input type="text" required name="username" class="form-control" id="exampleInputUser1" aria-describedby="userHelp" placeholder="Enter username">
+    <small id="userHelp" class="form-text text-muted">We'll never share your username with anyone else.</small>
+  </div>
+  <div class="form-group">
+  //////  <label for="exampleInputPassword1">Password</label> 
+    <input type="password" name="password" required class="form-control" id="exampleInputPassword1" placeholder="Enter password">
+    <small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>  -->
+   <div class="body">
+   <div class="login-box">
+    <img src="images/05ef551947e0ea0a402d7368b4821685.jpg" class="avatar"/>
+    <h2>Login Here</h2>
+    <form action="/login" method="POST">
+      <p>Username</p>
+      <input type="text" name="username" placeholder="Enter Username">
+      <p>Password</p>
+      <input type="password" name="password" placeholder="Enter Password">
+      <button class="login-btn" type="submit">Login</button>
+
+    
+    <p>  Don't have an account? Sign up <a href="/signup">here</a> </p>
+
+ {{#if errorMessage}}
+  <div class="error">{{errorMessage}} </div> 
+{{/if}}
+  </div>
+  
+ 
+
+ 
+</form>
+
+
+</div>
+

@@ -1,0 +1,51 @@
+
+ {{#if loggedUser}}
+ <h1 class="page-title">Welcome {{loggedUser.username}}</h1>
+ {{/if}}
+ 
+ 
+ 
+ <div class="containers">
+      <div class="row">
+    {{#each cards}}
+      
+    <label class="label-card">
+       <input class="input-card" type="checkbox" />
+    <div class="mycard flip-card" >
+      <div class="mycard-body front">
+        <h3 class="mycard-title"> {{phrase}} </h3> 
+      
+        <hr>
+        <p class="click">Click to flip</p>   
+        <div class="thumbsup-icon">
+          <form action="/main/{{_id}}" method="POST">
+            <button type="submit" class="btn-thumbsup-icon">
+              <img src="../images/thumbs_up.png" alt="like-button">
+            </button>
+          </form>
+      </div>
+      </div>
+
+       
+       <div class="mycard-body back">
+               
+               <audio controls>
+        <source src="{{translationAudioPt}}" type="audio/mpeg">
+        </audio>
+     
+        <h3 class="mycard-title"> {{translation}} </h3> 
+         <hr >
+        
+               <audio controls>
+        <source src="{{meaningAudioEng}}" type="audio/mpeg">
+        </audio>
+ 
+         <h3 class="mycard-title"> {{meaning}} </h3>  
+         <hr>
+         <p class="click">Click to flip</p>         
+      </div>
+    </div>
+     </label>
+    {{/each}}
+    </div>
+  </div> 
