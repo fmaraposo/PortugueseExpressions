@@ -1319,12 +1319,6 @@ const cards = [
   }  */
 ];
 
-/* Card.create(cards)
-.then(cardFromDB => {
-  console.log(`Created ${cardFromDB.length} cards`);
-  mongoose.connection.close()
-}).catch(err => console.log(`An error occurred ${err}`)) */
-
 
 cards.forEach((card) => {
   let phraseAudioEng="";
@@ -1353,7 +1347,7 @@ cards.forEach((card) => {
     translationAudioPt,
     meaningAudioEng
   }).then((cardFromDb) => {
-    console.log(`Created ${cardFromDb.length} proverbs`)
+    console.log(`Created ${cardFromDb.phrase} proverbs`)
   }).catch((err) => {
     console.log(`An error occurred ${err}`)
   })
