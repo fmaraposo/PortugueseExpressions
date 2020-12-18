@@ -1,15 +1,14 @@
 require('dotenv').config();
-//const googleTtsApi = require('google-tts-api');
 const mongoose = require('mongoose');
 //const { default: createCloudinaryStorage } = require('multer-storage-cloudinary');
 const Card = require('../models/Card.js');
 const DB_NAME = 'proverbs-app';
-mongoose.connect('mongodb+srv://admin:admin1234@cluster0.y3zeb.mongodb.net/proverbs-app?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGO_DB_URI, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true
 }); 
-const googleTTS = require('google-tts-api');
+/* const googleTTS = require('google-tts-api'); */
 
 const cards = [
    {
@@ -1320,9 +1319,14 @@ const cards = [
   }  */
 ];
 
+Card.create(cards)
+.then(cardFromDB => {
+  console.log(`Created ${cardFromDB.length} cards`);
+  mongoose.connection.close()
+}).catch(err => console.log(`An error occurred ${err}`))
 
 
-cards.forEach((card) => {
+/* cards.forEach((card) => {
   let phraseAudioEng="";
   let translationAudioPt="";
   let meaningAudioEng="";
@@ -1351,5 +1355,5 @@ cards.forEach((card) => {
   });
 });
 });
-
+ */
 
