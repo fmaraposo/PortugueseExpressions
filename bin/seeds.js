@@ -8,7 +8,7 @@ mongoose.connect(process.env.MONGO_DB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 }); 
-/* const googleTTS = require('google-tts-api'); */
+const googleTTS = require('google-tts-api');
 
 const cards = [
    {
@@ -1319,24 +1319,24 @@ const cards = [
   }  */
 ];
 
-Card.create(cards)
+/* Card.create(cards)
 .then(cardFromDB => {
   console.log(`Created ${cardFromDB.length} cards`);
   mongoose.connection.close()
-}).catch(err => console.log(`An error occurred ${err}`))
+}).catch(err => console.log(`An error occurred ${err}`)) */
 
 
 /* cards.forEach((card) => {
   let phraseAudioEng="";
   let translationAudioPt="";
   let meaningAudioEng="";
-  googleTTS(`${card.phrase}`, 'en', 1)
+  googleTTS.getAudioUrl(`${card.phrase}`, 'en', 1, 'https://translate.google.com')
   .then((phraseAudioEngFromTTS) => {
     phraseAudioEng = phraseAudioEngFromTTS;
-    return googleTTS(`${card.translation}`, 'pt', 1)
+    return googleTTS.getAudioUrl(`${card.translation}`, 'pt', 1, 'https://translate.google.com')
     .then((translationAudioPtFromTTS) => {
       translationAudioPt=translationAudioPtFromTTS;
-      return googleTTS(`${card.meaning}`, 'en', 1)
+      return googleTTS.getAudioUrl(`${card.meaning}`, 'en', 1, 'https://translate.google.com')
       .then(meaningAudioEngFromTTS => {
         meaningAudioEng = meaningAudioEngFromTTS;
       return Card.create({
@@ -1355,5 +1355,38 @@ Card.create(cards)
   });
 });
 });
- */
+  */
 
+
+cards.forEach((card) => {
+  let phraseAudioEng="";
+  let translationAudioPt="";
+  let meaningAudioEng="";
+  phraseAudioEng = googleTTS.getAudioUrl(`${card.phrase}`, {
+    lang:'en',
+    slow: false,
+    host: 'https://translate.google.com'
+  });
+  translationAudioPt = googleTTS.getAudioUrl(`${card.translation}`, {
+    lang: 'pt',
+    slow: false,
+    host: 'https://translate.google.com'
+  });
+  meaningAudioEng = googleTTS.getAudioUrl(`${card.meaning}`, {
+    lang: 'en',
+    slow: false,
+    host: 'https://translate.google.com'
+  });
+  return Card.create({
+    phrase: card.phrase,
+    translation: card.translation,
+    meaning: card.meaning,
+    phraseAudioEng,
+    translationAudioPt,
+    meaningAudioEng
+  }).then((cardFromDb) => {
+    console.log(`Created ${cardFromDb.length} proverbs`)
+  }).catch((err) => {
+    console.log(`An error occurred ${err}`)
+  })
+}) 
