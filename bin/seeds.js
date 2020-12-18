@@ -1326,38 +1326,6 @@ const cards = [
 }).catch(err => console.log(`An error occurred ${err}`)) */
 
 
-/* cards.forEach((card) => {
-  let phraseAudioEng="";
-  let translationAudioPt="";
-  let meaningAudioEng="";
-  googleTTS.getAudioUrl(`${card.phrase}`, 'en', 1, 'https://translate.google.com')
-  .then((phraseAudioEngFromTTS) => {
-    phraseAudioEng = phraseAudioEngFromTTS;
-    return googleTTS.getAudioUrl(`${card.translation}`, 'pt', 1, 'https://translate.google.com')
-    .then((translationAudioPtFromTTS) => {
-      translationAudioPt=translationAudioPtFromTTS;
-      return googleTTS.getAudioUrl(`${card.meaning}`, 'en', 1, 'https://translate.google.com')
-      .then(meaningAudioEngFromTTS => {
-        meaningAudioEng = meaningAudioEngFromTTS;
-      return Card.create({
-        phrase: card.phrase,
-        translation: card.translation,
-        meaning: card.meaning,
-        phraseAudioEng,
-        translationAudioPt,
-        meaningAudioEng
-      }).then((cardFromDb) => {
-        console.log(`Created ${cardFromDb.phrase} proverbs`);
-      }).catch((err) => {
-        console.log(`Error occured: ${err}`);
-      });
-    });
-  });
-});
-});
-  */
-
-
 cards.forEach((card) => {
   let phraseAudioEng="";
   let translationAudioPt="";

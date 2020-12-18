@@ -4,14 +4,6 @@ const Card = require('../models/Card');
 const Like = require('../models/Like');
 const googleTTS = require('google-tts-api');
 
-// get audio URL
-const url = googleTTS.getAudioUrl('Hello World', {
-  lang: 'en-US',
-  slow: false,
-  host: 'https://translate.google.com',
-});
-console.log(url); // https://translate.google.com/translate_tts?...
-
 function requiredLogin(req, res, next) {
   if(req.session.currentUser) {
       next();
